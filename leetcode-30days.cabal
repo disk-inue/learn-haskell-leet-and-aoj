@@ -1,0 +1,54 @@
+cabal-version:       2.4
+
+name:                leetcode-30days
+version:             0.1.0.0
+synopsis:            LeetCode 30 Days Challenge Practice
+description:         Haskell solutions for LeetCode 30 Days Challenge
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              disk.inoue
+maintainer:          disk.inoue@example.com
+copyright:           2025 disk.inoue
+category:            Practice
+build-type:          Simple
+extra-source-files:  README.md
+                     CHANGELOG.md
+
+common warnings
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+
+library
+  import:              warnings
+  exposed-modules:     Utils.Timer
+                     , Solutions
+  build-depends:       base >= 4.7 && < 5
+                     , time
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable leetcode
+  import:              warnings
+  main-is:             Main.hs
+  build-depends:       base >= 4.7 && < 5
+                     , leetcode-30days
+  hs-source-dirs:      app
+  default-language:    Haskell2010
+
+test-suite leetcode-test
+  import:              warnings
+  type:                exitcode-stdio-1.0
+  main-is:             Spec.hs
+  build-depends:       base >= 4.7 && < 5
+                     , leetcode-30days
+                     , hspec >= 2.0
+                     , QuickCheck
+  hs-source-dirs:      test
+  default-language:    Haskell2010
